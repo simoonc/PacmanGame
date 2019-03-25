@@ -127,7 +127,9 @@ public class Game {
         //reset the points
         points = 0;
         pointsView.setText("Points: " + points);
+        setPacSpeed(10);
         initEnemies = false;
+
         for(EvilPacMan item : enemies){
             item.SetEnemy(true);
 

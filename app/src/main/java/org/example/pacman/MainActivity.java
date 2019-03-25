@@ -321,6 +321,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
             Toast.makeText(this,"New Game",Toast.LENGTH_LONG).show();
             lvlCounter = 30;
             game.SetRunning(false);
+            textViewPower.setText("Power up: No power");
             textViewTicker.setText("Timer value: "+lvlCounter);
             game.resetGame();
             return true;
