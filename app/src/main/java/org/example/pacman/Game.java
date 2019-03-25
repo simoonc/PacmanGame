@@ -21,7 +21,6 @@ import java.util.Random;
  */
 
 public class Game {
-    MainActivity activity;
     //context is a reference to the activity
     private Context context;
     private int points = 0; //how points do we have
@@ -128,6 +127,7 @@ public class Game {
         points = 0;
         pointsView.setText("Points: " + points);
         setPacSpeed(10);
+        powerView.setText("Power up: No power");
         initEnemies = false;
 
         for(EvilPacMan item : enemies){

@@ -79,12 +79,12 @@ public class GameView extends View {
 		//TODO loop through the list of goldcoins and draw them.
 		for(GoldCoin item : game.getCoins()){
 			if(!item.IsTaken()){
-				canvas.drawBitmap(game.getCoinBitMap(), item.getCoinx(),item.getCoiny(), null);
+				canvas.drawBitmap(game.getCoinBitMap(), item.getCoinx(),item.getCoiny(),paint);
 			}
 		}
 		for(PowerUp item : game.getPowerUps()){
 			if(!item.PowerIsTaken()){
-				canvas.drawBitmap(game.getPowerUpBitMap(), item.getPowerx(),item.getPowery(), null);
+				canvas.drawBitmap(game.getPowerUpBitMap(), item.getPowerx(),item.getPowery(), paint);
 			}
 		}
 
