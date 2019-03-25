@@ -12,6 +12,7 @@ import android.view.View;
 public class GameView extends View {
 
 	Game game;
+
     int h,w; //used for storing our height and width of the view
 
 	public void setGame(Game game)
@@ -45,6 +46,19 @@ public class GameView extends View {
 		//Here we get the height and weight
 		h = canvas.getHeight();
 		w = canvas.getWidth();
+
+		if(!game.InitCoins()){
+			game.SetCoins(true);
+			game.initCoins();
+		}
+		if(!game.InitPowerUps()){
+			game.SetPowerUps(true);
+			game.initpowerUps();
+		}
+		if(!game.InitEnemies()){
+			game.SetEnemies(true);
+			game.initEnemies();
+		}
 		//update the size for the canvas to the game.
 		game.setSize(h,w);
 		Log.d("GAMEVIEW","h = "+h+", w = "+w);
@@ -54,8 +68,30 @@ public class GameView extends View {
 
 		//draw the pacman
 		canvas.drawBitmap(game.getPacBitmap(), game.getPacx(),game.getPacy(), paint);
+
+        for(EvilPacMan enemy : game.getEnemies()){
+            if(!enemy.IsSet()) {
+                canvas.drawBitmap(game.getEvilPacBitMap(), enemy.getEvilPacX(),
+                        enemy.getEvilPacY() , paint);
+
+            }
+        }
 		//TODO loop through the list of goldcoins and draw them.
+		for(GoldCoin item : game.getCoins()){
+			if(!item.IsTaken()){
+				canvas.drawBitmap(game.getCoinBitMap(), item.getCoinx(),item.getCoiny(), null);
+			}
+		}
+		for(PowerUp item : game.getPowerUps()){
+			if(!item.PowerIsTaken()){
+				canvas.drawBitmap(game.getPowerUpBitMap(), item.getPowerx(),item.getPowery(), null);
+			}
+		}
+
+
+
 		super.onDraw(canvas);
+
 	}
 
 }
